@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <title>Blackjack 21</title>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+
+    <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+
+    <link href="jogo.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+<body>
+
+<div class="background-overlay"></div>
+
+<div class="game-container">
+
+    <div class="top-bar">
+
+        <div>
+            <h1>Blackjack 21</h1>
+            <p id="jogador-nome"></p>
+        </div>
+
+        <div class="top-actions">
+
+            <button class="help-button" id="como-jogar">
+                ?
+            </button>
+
+            <button class="danger-button" id="logout">
+                Sair
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="status-card" id="status-card">
+
+        <p id="status">
+            Clique em "Novo Jogo" para começar
+        </p>
+
+        <p id="partidas"></p>
+
+    </div>
+
+
+    <div class="mesa">
+
+        <div class="mao">
+
+            <h2>Dealer</h2>
+
+            <div class="cartas" id="dealer-cartas"></div>
+
+            <p class="pontuacao" id="dealer-pontuacao">
+                0 pontos
+            </p>
+
+        </div>
+
+
+        <div class="mao">
+
+            <h2>Jogador</h2>
+
+            <div class="cartas" id="jogador-cartas"></div>
+
+            <p class="pontuacao" id="jogador-pontuacao">
+                0 pontos
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="controles">
+
+        <button id="novo-jogo">
+            Novo Jogo
+        </button>
+
+        <button disabled id="comprar">
+            Pedir Carta
+        </button>
+
+        <button disabled id="parar">
+            Parar
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="modal" id="modal">
+
+    <div class="modal-content">
+
+        <h2>Deseja mesmo sair?</h2>
+
+        <div class="modal-buttons">
+
+            <button id="confirmar-sair">
+                Confirmar
+            </button>
+
+            <button class="danger-button" id="cancelar-sair">
+                Cancelar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal" id="modal-regras">
+
+    <div class="modal-content regras-modal">
+
+        <h2>Como Jogar Blackjack</h2>
+
+        <div class="regras-texto">
+
+            <p>
+                O objetivo é chegar o mais perto possível de 21 pontos sem ultrapassar.
+            </p>
+
+            <p>
+                Cartas numéricas valem seu próprio valor.
+            </p>
+
+            <p>
+                Valete, Dama e Rei valem 10 pontos.
+            </p>
+
+            <p>
+                O Ás vale 1 ou 11 pontos.
+            </p>
+
+            <p>
+                Você pode:
+            </p>
+
+            <ul>
+                <li><strong>Pedir Carta</strong> → comprar mais uma carta.</li>
+                <li><strong>Parar</strong> → encerrar sua rodada.</li>
+            </ul>
+
+            <p>
+                Se ultrapassar 21 pontos, você perde automaticamente.
+            </p>
+
+            <p>
+                O dealer joga após você parar.
+            </p>
+
+        </div>
+
+        <div class="modal-buttons">
+
+            <button id="fechar-regras">
+                Entendi
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../shared/auth.js"></script>
+
+<script>
+    protegerPagina();
+</script>
+
+<script src="game-ui.js"></script>
+<script src="game-api.js"></script>
+<script src="jogo.js"></script>
+</body>
+
+</html>

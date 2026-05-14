@@ -1,0 +1,542 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: 'Poppins', sans-serif;
+
+    color: white;
+
+    background: radial-gradient(circle at top, #1d5c2f 0%, #0f3d20 30%, #08140d 70%, #050505 100%);
+
+    overflow-x: hidden;
+}
+
+.background-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+
+    z-index: 0;
+}
+
+.game-container {
+    position: relative;
+    z-index: 1;
+
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    padding: 35px;
+}
+
+/* TOPO */
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 35px;
+}
+
+.top-bar h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 52px;
+    font-weight: bold;
+
+    color: #f5d67b;
+
+    letter-spacing: 2px;
+
+    text-shadow: 0 0 10px rgba(245, 214, 123, 0.4),
+    0 0 20px rgba(245, 214, 123, 0.2);
+}
+
+#jogador-nome {
+    margin-top: 8px;
+
+    color: #d0d0d0;
+
+    font-size: 16px;
+}
+
+/* STATUS */
+
+.status-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background: linear-gradient(145deg,
+    rgba(0, 0, 0, 0.75),
+    rgba(20, 20, 20, 0.95));
+
+    border: 2px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 24px;
+
+    padding: 28px;
+
+    margin-bottom: 40px;
+
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(76, 175, 80, 0.15);
+}
+
+#status {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+    font-size: 34px;
+    font-weight: bold;
+
+    color: #7dff84;
+
+    margin-bottom: 10px;
+
+    text-shadow: 0 0 10px rgba(125, 255, 132, 0.4);
+}
+
+#partidas {
+    color: #cfcfcf;
+    font-size: 15px;
+}
+
+/* MESA */
+
+.mesa {
+    display: flex;
+    gap: 35px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 45px;
+}
+
+.mao {
+    flex: 1;
+    min-width: 340px;
+
+    background: linear-gradient(
+            145deg,
+            rgba(0, 0, 0, 0.82),
+            rgba(15, 15, 15, 0.96)
+    );
+
+    border-radius: 26px;
+
+    padding: 30px;
+
+    border: 2px solid rgba(255, 255, 255, 0.06);
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(76, 175, 80, 0.08);
+
+    transition: 0.25s;
+}
+
+.mao:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55),
+    0 0 35px rgba(76, 175, 80, 0.12);
+}
+
+.mao h2 {
+    font-family: 'Cinzel', serif;
+
+    font-size: 38px;
+
+    margin-bottom: 25px;
+
+    color: #ffffff;
+}
+
+/* CARTAS */
+
+.cartas {
+    display: flex;
+    align-items: center;
+
+    min-height: 220px;
+
+    overflow-x: auto;
+
+    padding-bottom: 10px;
+}
+
+.cartas img {
+    height: 170px;
+
+    margin-right: -70px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45);
+
+    transition: transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.cartas img:hover {
+    transform: translateY(-12px) scale(1.03);
+
+    z-index: 10;
+
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.65);
+}
+
+/* PONTUAÇÃO */
+
+.pontuacao {
+    margin-top: 28px;
+
+    display: inline-block;
+
+    padding: 16px 24px;
+
+    border-radius: 18px;
+
+    background: linear-gradient(
+            145deg,
+            rgba(76, 175, 80, 0.15),
+            rgba(76, 175, 80, 0.05)
+    );
+
+    border: 1px solid rgba(76, 175, 80, 0.4);
+
+    font-size: 24px;
+    font-weight: bold;
+
+    color: #7dff84;
+
+    box-shadow: 0 0 18px rgba(76, 175, 80, 0.18);
+}
+
+/* BOTÕES */
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 22px;
+
+    flex-wrap: wrap;
+
+    margin-top: 10px;
+}
+
+/* BOTÃO BASE */
+
+button {
+    font-family: 'Poppins', sans-serif;
+
+    position: relative;
+
+    border: none;
+
+    border-radius: 18px;
+
+    padding: 18px 34px;
+
+    min-width: 180px;
+
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    color: white;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+            transform 0.2s,
+            box-shadow 0.2s,
+            opacity 0.2s;
+
+    background:
+            linear-gradient(
+                    145deg,
+                    #d4af37,
+                    #8f6b11
+            );
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+            0 10px 25px rgba(0,0,0,0.45),
+            inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+/* BRILHO */
+
+button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+            linear-gradient(
+                    120deg,
+                    transparent,
+                    rgba(255,255,255,0.25),
+                    transparent
+            );
+
+    transition: 0.5s;
+}
+
+button:hover::before {
+    left: 120%;
+}
+
+/* HOVER */
+
+button:hover {
+    transform:
+            translateY(-4px)
+            scale(1.02);
+
+    box-shadow:
+            0 18px 30px rgba(0,0,0,0.55),
+            0 0 18px rgba(212,175,55,0.35);
+}
+
+/* CLICK */
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* DESABILITADO */
+
+button:disabled {
+    background: linear-gradient(
+            145deg,
+            #555,
+            #333
+    );
+
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+/* BOTÃO VERMELHO */
+
+.danger-button {
+    background:
+            linear-gradient(
+                    145deg,
+                    #ff4b4b,
+                    #8b1111
+            );
+
+    box-shadow:
+            0 10px 25px rgba(0,0,0,0.45),
+            0 0 15px rgba(255,75,75,0.2);
+}
+
+.danger-button:hover {
+    box-shadow:
+            0 18px 30px rgba(0,0,0,0.55),
+            0 0 20px rgba(255,75,75,0.35);
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+}
+
+.modal-content {
+    background: linear-gradient(
+            145deg,
+            #171717,
+            #0d0d0d
+    );
+
+    padding: 35px;
+
+    border-radius: 24px;
+
+    width: 100%;
+    max-width: 430px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+
+    font-size: 28px;
+}
+
+.modal-buttons {
+    margin-top: 28px;
+
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+/* AÇÕES TOPO */
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* BOTÃO AJUDA */
+
+.help-button {
+    width: 58px;
+    min-width: 58px;
+    height: 58px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    background:
+            linear-gradient(
+                    145deg,
+                    #3f8cff,
+                    #1247a8
+            );
+
+    box-shadow:
+            0 10px 20px rgba(0,0,0,0.4),
+            0 0 15px rgba(63,140,255,0.25);
+}
+
+.help-button:hover {
+    box-shadow:
+            0 15px 25px rgba(0,0,0,0.5),
+            0 0 20px rgba(63,140,255,0.4);
+}
+
+/* MODAL REGRAS */
+
+.regras-modal {
+    max-width: 650px;
+
+    text-align: left;
+}
+
+.regras-modal h2 {
+    text-align: center;
+
+    margin-bottom: 25px;
+
+    color: #f5d67b;
+
+    font-family: 'Cinzel', serif;
+}
+
+.regras-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    color: #e5e5e5;
+}
+
+.regras-texto ul {
+    padding-left: 25px;
+}
+
+.regras-texto strong {
+    color: #7dff84;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+
+    .top-bar {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .top-bar h1 {
+        font-family: 'Cinzel', serif;
+        font-size: 40px;
+    }
+
+    #status {
+        font-family: 'Cinzel', serif;
+        letter-spacing: 1px;
+        font-size: 28px;
+    }
+
+    .mao h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 30px;
+    }
+
+    .cartas img {
+        height: 130px;
+        margin-right: -50px;
+    }
+
+    .pontuacao {
+        font-size: 20px;
+    }
+
+    .controles {
+        flex-direction: column;
+    }
+
+    button {
+        font-family: 'Poppins', sans-serif;
+        width: 100%;
+    }
+}
